@@ -27,4 +27,10 @@ export class MovieService {
        return found;
 
    }
+   async deleteMovie( id:number):Promise<void>{
+    const result= await this.movieRepository.delete(id);
+    if(result.affected==0){
+        throw new NotFoundException ("id not found");
+    }
+}
 }
