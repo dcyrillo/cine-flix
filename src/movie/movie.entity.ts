@@ -8,7 +8,7 @@ export class Movie extends  BaseEntity{
     @Column()
     name:String;
     @Column()
-    Category:String;
+    category:String;
     @Column()
     year:number;
     @Column()

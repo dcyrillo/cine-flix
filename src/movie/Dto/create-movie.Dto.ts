@@ -1,6 +1,6 @@
 export class CreateMovieDto{
     name:String;
-    Category:String;
+    category:String;
     year:number;
     director:String;
 
