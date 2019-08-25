@@ -1,5 +1,5 @@
 import {TypeOrmModuleOptions} from "@nestjs/typeorm";
-import { Movie } from "src/movie/movie.entity";
+import { Movie } from "src/Movie/movie.entity";
 
 export const typeOrmConfig:TypeOrmModuleOptions={
 

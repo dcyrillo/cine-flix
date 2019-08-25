@@ -1,6 +1,6 @@
 import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch } from '@nestjs/common';
 import { MovieService } from './movie.service';
-import{Movie} from '../movie/movie.entity';
+import{Movie} from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 
 @Controller('movie')
