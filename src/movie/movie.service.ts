@@ -32,5 +32,38 @@ export class MovieService {
     if(result.affected==0){
         throw new NotFoundException ("id not found");
     }
-}
+    }
+    async updateName(id:number, name:String ):Promise<Movie>{
+        const movie=await this.getMovieById(id);
+        movie.name=name;
+        await movie.save();
+
+        return movie;
+    }
+   async updateCategory(id:number, category:String ):Promise<Movie>{
+        const movie=await this.getMovieById(id);
+        movie.category=category;
+        await movie.save();
+
+        return movie;
+    }
+    async updateYear(id:number , year:number):Promise<Movie>{
+
+        const movie=await this.getMovieById(id);
+        movie.year=year;
+        await movie.save();
+
+        return movie;
+        
+    }
+    async updateDirector(id:number ,director:String){
+        
+        const movie=await this.getMovieById(id);
+        movie.director=director;
+        await movie.save();
+
+        return movie;
+    }
+
+
 }
