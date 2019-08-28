@@ -1,5 +1,6 @@
 import {TypeOrmModuleOptions} from "@nestjs/typeorm";
 import { Movie } from "src/movie/movie.entity";
+import { Category } from "src/category/category.entity";
 
 export const typeOrmConfig:TypeOrmModuleOptions={
 
@@ -9,6 +10,6 @@ export const typeOrmConfig:TypeOrmModuleOptions={
     username: 'dudu',
     password: '32252269',
     database: 'desafiohaizencineback',
-    entities: [__dirname + '/**/*.entity{.ts,.js}',Movie],
+    entities: [__dirname + '/**/*.entity{.ts,.js}',Movie,Category],
     synchronize: true,
 }

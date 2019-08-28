@@ -33,6 +33,8 @@ export class MovieService {
         throw new NotFoundException ("id not found");
     }
     }
+
+  
     async updateName(id:number, name:String ):Promise<Movie>{
         const movie=await this.getMovieById(id);
         movie.name=name;

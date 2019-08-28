@@ -12,6 +12,7 @@ export class MovieController {
 
         return this.movieService.getMovieById(id);
     }
+  
 
     @Post()
     @UsePipes(ValidationPipe)
