@@ -1,15 +1,15 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
-import { type } from "os";
-import {Movie} from '../movie/movie.entity'
+import { BaseEntity, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { Movie } from "src/movie/movie.entity";
+
 
 @Entity()
-export class Category extends  BaseEntity{
+export class Category extends BaseEntity {
 
-    
+
     @PrimaryGeneratedColumn()
-    id:number;
-    @Column()
-    @OneToOne(type=> Movie)
-    name:Movie;
+    id: number;
     
+    @OneToOne( type => Movie)
+    @JoinColumn()
+    name:Movie
 }
