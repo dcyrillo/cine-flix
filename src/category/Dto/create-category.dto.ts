@@ -1,10 +1,9 @@
 import { IsNotEmpty } from "class-validator";
-import { Movie } from "src/movie/movie.entity";
 
-export class FilterDto{
+export class CreateCategoryDto{
    
     @IsNotEmpty()
-    name:Movie;
+    id:number;
     @IsNotEmpty()
     search:string;
 

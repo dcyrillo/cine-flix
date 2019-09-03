@@ -1,18 +1,61 @@
-import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch, NotFoundException, Put } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import{Movie} from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 
-@Controller('movie')
-export class MovieController {
-    constructor(private movieService:MovieService){}
 
+@Controller('movies')
+export class MovieController {
+    constructor(private movieService:MovieService,){}
+
+    @Get()
+    async findAll(): Promise<Movie[]> {
+      return this.movieService.findAll();
+    }
+  
+    @Get('/:id')
+    async findOne(@Param('id') id) {
+      return this.movieService.findOne(+id).then(data => {
+        if (!data) {
+          throw new NotFoundException("id not found");
+        } else {
+          return data;
+        }
+      });
+    }
+  
+    @Post()
+    async create(@Body() movie: CreateMovieDto) {
+      return this.movieService.create(movie);
+    }
+  
+    @Put('/:id')
+    async update(
+      @Param('id') id: number,
+      @Body() movie: CreateMovieDto
+    ) {
+      return this.movieService.update(+id, movie).then(data => {
+        if (!data) {
+            throw new NotFoundException("data or id not found");
+        }
+      });
+    }
+  
+    @Delete(':id')
+     async delete(@Param('id') id: number) {
+      return this.movieService.delete(id)
+      
+    }
+  }
+
+    /*
     @Get('/:id')
     getMovieById(@Param('id',ParseIntPipe) id:number):Promise <Movie>{
 
         return this.movieService.getMovieById(id);
     }
   
+   
 
     @Post()
     @UsePipes(ValidationPipe)
@@ -40,10 +83,10 @@ export class MovieController {
     @Patch('/:id/category')
     updateCategoryMovie(
         @Param('id',ParseIntPipe) id:number,
-        @Body('category',ValidationPipe) category:String 
+        
     ):Promise<Movie>{
 
-        return this.movieService.updateCategory(id,category);
+        return this.movieService.updateCategory(id);
     }
 
     @Patch('/:id/year')
@@ -61,5 +104,5 @@ export class MovieController {
     ):Promise<Movie>{
 
         return this.movieService.updateDirector(id,director);
-    }
-}
+    }*/
+

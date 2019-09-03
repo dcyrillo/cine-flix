@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MovieRepository } from './movie.repository';
-import{Movie} from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
+import { Movie } from './movie.entity';
 
 @Injectable()
 export class MovieService {
@@ -11,61 +11,41 @@ export class MovieService {
        @InjectRepository(MovieRepository)
        private movieRepository: MovieRepository,
    ){}
+ 
+   async create(movie:CreateMovieDto) {
+    const auxMovie = new Movie().createFromDto(movie);
 
+    return this.movieRepository.save(auxMovie).then(data => {
+      auxMovie.id = data.id;
+      return auxMovie;
+    });
+  }
 
-  async createMovie(createMovieDtro:CreateMovieDto):Promise<Movie>{
-      
-  return this.movieRepository.createMovie(createMovieDtro);
+  async delete(id: number): Promise<void> {
+       this.movieRepository.delete(id);
+  }
 
- } 
-   async getMovieById(id:number):Promise<Movie>{
-       const found= await this.movieRepository.findOne(id);
-       if(!found){
-           
-           throw new NotFoundException("movie not found");
-       }
-       return found;
+  async findAll(): Promise<Movie[]> {
+    return this.movieRepository.find({ relations: ['category'] });
+  }
 
-   }
-   async deleteMovie( id:number):Promise<void>{
-    const result= await this.movieRepository.delete(id);
-    if(result.affected==0){
-        throw new NotFoundException ("id not found");
+  async findOne(id: number): Promise<Movie> {
+    return this.movieRepository.findOne(id, { relations: ['category'] });
+  }
+
+  async update(
+    id: number,
+    movie:CreateMovieDto
+  ): Promise<Movie> {
+    if (await this.movieRepository.findOne(id)) {
+      const auxMovie = new Movie().createFromDto(movie);
+      auxMovie.id = id;
+      return this.movieRepository.save(auxMovie);
+    } else {
+      return null;
     }
-    }
-
-  
-    async updateName(id:number, name:String ):Promise<Movie>{
-        const movie=await this.getMovieById(id);
-        movie.name=name;
-        await movie.save();
-
-        return movie;
-    }
-   async updateCategory(id:number, category:String ):Promise<Movie>{
-        const movie=await this.getMovieById(id);
-        movie.category=category;
-        await movie.save();
-
-        return movie;
-    }
-    async updateYear(id:number , year:number):Promise<Movie>{
-
-        const movie=await this.getMovieById(id);
-        movie.year=year;
-        await movie.save();
-
-        return movie;
-        
-    }
-    async updateDirector(id:number ,director:String){
-        
-        const movie=await this.getMovieById(id);
-        movie.director=director;
-        await movie.save();
-
-        return movie;
-    }
-
-
+  }
 }
+
+
+

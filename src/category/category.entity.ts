@@ -1,5 +1,6 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, Column, ManyToOne } from "typeorm";
 import { Movie } from "src/movie/movie.entity";
+
 
 
 @Entity()
@@ -8,8 +9,9 @@ export class Category extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
+    @Column()
+    name:String;
+    @ManyToOne(type => Movie, movies => movies.categories)
+    movies:Movie[];
     
-    @OneToOne( type => Movie)
-    @JoinColumn()
-    name:Movie
 }
