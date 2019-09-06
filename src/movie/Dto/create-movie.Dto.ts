@@ -8,6 +8,8 @@ export class CreateMovieDto{
     @IsNotEmpty()
     categoryId:number;
     @IsNotEmpty()
+    directorId:number;
+    @IsNotEmpty()
     year:number;
     @IsNotEmpty()
     director:String;

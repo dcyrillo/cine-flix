@@ -1,6 +1,8 @@
 import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Category } from "src/category/category.entity";
 import { CreateMovieDto } from "./Dto/create-movie.Dto";
+import { type } from "os";
+import { Director } from "src/director/director.entity";
 
 
 
@@ -19,13 +21,14 @@ export class Movie extends  BaseEntity{
     @Column()
     year:number;
     
-    @Column()
-    director:String;
+    @ManyToOne(type=> Director , directors=>directors.movies)
+    director:Director;
 
     createFromDto(data: CreateMovieDto) {
         this.name=data.name;
         this.year=data.year;
-        this.director=data.director;
+        const director=new Director();
+        director.id=data.directorId;
         const category = new Category();
         category.id = data.categoryId;
         this.categories = category;
