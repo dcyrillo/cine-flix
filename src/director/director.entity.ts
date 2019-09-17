@@ -7,7 +7,7 @@ import { Movie } from "src/movie/movie.entity";
 export class Director extends BaseEntity {
 
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: number;
     @Column()
     name:String;

@@ -6,7 +6,7 @@ export class CreateMovieDto{
     @IsNotEmpty()
     name:String;
     @IsNotEmpty()
-    categoryId:number;
+    categoriesId:number;
     @IsNotEmpty()
     directorId:number;
     @IsNotEmpty()

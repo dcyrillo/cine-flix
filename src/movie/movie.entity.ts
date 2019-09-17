@@ -9,7 +9,7 @@ import { Director } from "src/director/director.entity";
 @Entity()
 export class Movie extends  BaseEntity{
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id:number;
 
     @Column()
@@ -30,7 +30,7 @@ export class Movie extends  BaseEntity{
         const director=new Director();
         director.id=data.directorId;
         const category = new Category();
-        category.id = data.categoryId;
+        category.id = data.categoriesId;
         this.categories = category;
     
         return this;
