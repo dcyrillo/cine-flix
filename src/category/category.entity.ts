@@ -7,10 +7,12 @@ import { Movie } from "src/movie/movie.entity";
 export class Category extends BaseEntity {
 
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: number;
+  
     @Column()
     name:String;
+  
     @ManyToOne(type => Movie, movies => movies.categories)
     movies:Movie[];
     
