@@ -15,7 +15,7 @@ export class CategoryController {
   
     @Get(':id')
     async findOne(@Param('id') id) {
-      return this.categoriesService.findOne(+id).then(data => {
+      return this.categoriesService.findOne(id).then(data => {
         if (!data) {
           throw new NotFoundException("Category Not Found");
         } else {
@@ -30,8 +30,8 @@ export class CategoryController {
     }
   
     @Put(':id')
-    async update(@Param('id') id: number, @Body() category:CreateCategoryDto) {
-      return this.categoriesService.update(+id, category).then(data => {
+    async update(@Param('id') id:string, @Body() category:CreateCategoryDto) {
+      return this.categoriesService.update(id, category).then(data => {
         if (!data) {
           throw new NotFoundException("Cannot put category");
         }
@@ -39,7 +39,7 @@ export class CategoryController {
     }
   
     @Delete(':id')
-    async delete(@Param('id') id: number) {
+    async delete(@Param('id') id: string) {
       return this.categoriesService.delete(id);
 }
 

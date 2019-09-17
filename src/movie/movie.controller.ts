@@ -15,7 +15,7 @@ export class MovieController {
   
     @Get('/:id')
     async findOne(@Param('id') id) {
-      return this.movieService.findOne(+id).then(data => {
+      return this.movieService.findOne(id).then(data => {
         if (!data) {
           throw new NotFoundException("id not found");
         } else {
@@ -31,10 +31,10 @@ export class MovieController {
   
     @Put('/:id')
     async update(
-      @Param('id') id: number,
+      @Param('id') id: string,
       @Body() movie: CreateMovieDto
     ) {
-      return this.movieService.update(+id, movie).then(data => {
+      return this.movieService.update(id, movie).then(data => {
         if (!data) {
             throw new NotFoundException("data or id not found");
         }
@@ -42,7 +42,7 @@ export class MovieController {
     }
   
     @Delete(':id')
-     async delete(@Param('id') id: number) {
+     async delete(@Param('id') id:string) {
       return this.movieService.delete(id)
       
     }
@@ -74,7 +74,7 @@ export class MovieController {
     @Patch('/:id/name')
     updateNameMovie(
         @Param('id',ParseIntPipe) id:number,
-        @Body('name',ValidationPipe) name:String 
+        @Body('name',ValidationPipe) name:string 
     ):Promise<Movie>{
 
         return this.movieService.updateName(id,name);
@@ -100,7 +100,7 @@ export class MovieController {
     @Patch('/:id/director')
     updateDirectorMovie(
         @Param('id',ParseIntPipe) id:number,
-        @Body('director',ValidationPipe) director:String 
+        @Body('director',ValidationPipe) director:string 
     ):Promise<Movie>{
 
         return this.movieService.updateDirector(id,director);

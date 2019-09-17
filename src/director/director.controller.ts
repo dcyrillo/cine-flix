@@ -15,7 +15,7 @@ export class DirectorController {
 
   @Get('/:id')
   async findOne(@Param('id') id) {
-    return this.directorService.findOne(+id).then(data => {
+    return this.directorService.findOne(id).then(data => {
       if (!data) {
         throw new NotFoundException("id for director not found");
       } else {
@@ -31,10 +31,10 @@ export class DirectorController {
 
   @Put('/:id')
   async update(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() director: CreateDirectorDto
   ) {
-    return this.directorService.update(+id, director).then(data => {
+    return this.directorService.update(id, director).then(data => {
       if (!data) {
         throw new NotFoundException("data or id not found for director");
       }
@@ -42,7 +42,7 @@ export class DirectorController {
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: number) {
+  async delete(@Param('id') id: string) {
     return this.directorService.delete(id)
 
   }

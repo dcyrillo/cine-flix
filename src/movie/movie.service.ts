@@ -21,7 +21,7 @@ export class MovieService {
     });
   }
 
-  async delete(id: number): Promise<void> {
+  async delete(id: string): Promise<void> {
        this.movieRepository.delete(id);
   }
 
@@ -29,12 +29,12 @@ export class MovieService {
     return this.movieRepository.find({});
   }
 
-  async findOne(id: number): Promise<Movie> {
+  async findOne(id:string): Promise<Movie> {
     return this.movieRepository.findOne(id, { relations: ['category'] });
   }
 
   async update(
-    id: number,
+    id:string,
     movie:CreateMovieDto
   ): Promise<Movie> {
     if (await this.movieRepository.findOne(id)) {

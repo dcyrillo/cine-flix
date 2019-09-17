@@ -8,10 +8,10 @@ export class Category extends BaseEntity {
 
 
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id: string;
   
     @Column()
-    name:String;
+    name:string;
   
     @ManyToOne(type => Movie, movies => movies.categories)
     movies:Movie[];
