@@ -2,10 +2,10 @@ import { IsNotEmpty } from "class-validator";
 
 export class CreateDirectorDto{
    
-    id:number;
+    id:string;
     @IsNotEmpty()
-    name:String;
+    name:string;
     @IsNotEmpty()
-    directorId:number;
+    directorid:string;
    
 }

@@ -4,14 +4,14 @@ import { Category } from "src/category/category.entity";
 export class CreateMovieDto{
    
     @IsNotEmpty()
-    name:String;
+    name:string;
     @IsNotEmpty()
-    categoriesId:number;
+    categoriesId:string;
     @IsNotEmpty()
-    directorId:number;
+    directorId:string;
     @IsNotEmpty()
     year:number;
     @IsNotEmpty()
-    director:String;
+    director:string;
 
 }

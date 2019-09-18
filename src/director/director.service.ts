@@ -14,7 +14,7 @@ export class DirectorService {
         return this.directorRepository.save(director);
       }
     
-      async delete(id: number): Promise<void> {
+      async delete(id:string): Promise<void> {
          this.directorRepository.delete(id);
       }
     
@@ -22,11 +22,11 @@ export class DirectorService {
         return this.directorRepository.find();
       }
     
-      async findOne(id: number): Promise<Director> {
+      async findOne(id:string): Promise<Director> {
         return this.directorRepository.findOne(id);
       }
     
-      async update(id: number, director:CreateDirectorDto): Promise<Director> {
+      async update(id:string, director:CreateDirectorDto): Promise<Director> {
         if (await this.directorRepository.findOne(id)) {
           director.id = id;
           return this.directorRepository.save(director);

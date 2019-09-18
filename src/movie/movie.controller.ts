@@ -1,21 +1,29 @@
-import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch, NotFoundException, Put } from '@nestjs/common';
+import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch, NotFoundException, Put, Query } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import{Movie} from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
+import { GetCategoriesDto } from './Dto/filter.dto';
+import { MovieRepository } from './movie.repository';
 
 
 @Controller('movies')
 export class MovieController {
     constructor(private movieService:MovieService,){}
-
     @Get()
     async findAll(): Promise<Movie[]> {
       return this.movieService.findAll();
     }
-  
+    @Get()
+    async findOrder(filterDto:  GetCategoriesDto): Promise<Movie[]> {
+      return this.movieService.findOrder(filterDto);
+    }
+    @Get()
+    async findAllOrder(@Query() filterDto:GetCategoriesDto): Promise<Movie[]> {
+      return this.movieService.findAll();
+    }
     @Get('/:id')
     async findOne(@Param('id') id) {
-      return this.movieService.findOne(+id).then(data => {
+      return this.movieService.findOne(id).then(data => {
         if (!data) {
           throw new NotFoundException("id not found");
         } else {
@@ -31,10 +39,10 @@ export class MovieController {
   
     @Put('/:id')
     async update(
-      @Param('id') id: number,
+      @Param('id') id:string,
       @Body() movie: CreateMovieDto
     ) {
-      return this.movieService.update(+id, movie).then(data => {
+      return this.movieService.update(id, movie).then(data => {
         if (!data) {
             throw new NotFoundException("data or id not found");
         }
@@ -42,7 +50,7 @@ export class MovieController {
     }
   
     @Delete(':id')
-     async delete(@Param('id') id: number) {
+     async delete(@Param('id') id:string) {
       return this.movieService.delete(id)
       
     }
@@ -50,7 +58,7 @@ export class MovieController {
 
     /*
     @Get('/:id')
-    getMovieById(@Param('id',ParseIntPipe) id:number):Promise <Movie>{
+    getMovieById(@Param('id',ParseIntPipe) id:string):Promise <Movie>{
 
         return this.movieService.getMovieById(id);
     }
@@ -66,15 +74,15 @@ export class MovieController {
     }
     
     @Delete('/:id')
-    deleteMOvie(@Param() id:number):Promise<void>{
+    deleteMOvie(@Param() id:string):Promise<void>{
         return this.movieService.deleteMovie(id);
         
     }
 
     @Patch('/:id/name')
     updateNameMovie(
-        @Param('id',ParseIntPipe) id:number,
-        @Body('name',ValidationPipe) name:String 
+        @Param('id',ParseIntPipe) id:string,
+        @Body('name',ValidationPipe) name:string 
     ):Promise<Movie>{
 
         return this.movieService.updateName(id,name);
@@ -82,7 +90,7 @@ export class MovieController {
 
     @Patch('/:id/category')
     updateCategoryMovie(
-        @Param('id',ParseIntPipe) id:number,
+        @Param('id',ParseIntPipe) id:string,
         
     ):Promise<Movie>{
 
@@ -91,7 +99,7 @@ export class MovieController {
 
     @Patch('/:id/year')
     updateYearMovie(
-        @Param('id',ParseIntPipe) id:number,
+        @Param('id',ParseIntPipe) id:string,
         @Body('year',ParseIntPipe) year:number 
     ):Promise<Movie>{
 
@@ -99,8 +107,8 @@ export class MovieController {
     }
     @Patch('/:id/director')
     updateDirectorMovie(
-        @Param('id',ParseIntPipe) id:number,
-        @Body('director',ValidationPipe) director:String 
+        @Param('id',ParseIntPipe) id:string,
+        @Body('director',ValidationPipe) director:string 
     ):Promise<Movie>{
 
         return this.movieService.updateDirector(id,director);

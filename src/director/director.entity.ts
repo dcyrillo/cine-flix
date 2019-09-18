@@ -8,9 +8,9 @@ export class Director extends BaseEntity {
 
 
     @PrimaryGeneratedColumn("uuid")
-    id: number;
+    id:string;
     @Column()
-    name:String;
+    name:string;
     @ManyToOne(type => Movie, movies => movies.director)
     movies:Movie[];
     

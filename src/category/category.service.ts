@@ -16,7 +16,7 @@ export class CategoryService {
         return this.categoryRepository.save(category);
       }
     
-      async delete(id: number): Promise<void> {
+      async delete(id:string): Promise<void> {
          this.categoryRepository.delete(id);
       }
     
@@ -24,11 +24,11 @@ export class CategoryService {
         return this.categoryRepository.find();
       }
     
-      async findOne(id: number): Promise<Category> {
+      async findOne(id:string): Promise<Category> {
         return this.categoryRepository.findOne(id);
       }
     
-      async update(id: number, category:CreateCategoryDto): Promise<Category> {
+      async update(id:string, category:CreateCategoryDto): Promise<Category> {
         if (await this.categoryRepository.findOne(id)) {
           category.id = id;
           return this.categoryRepository.save(category);

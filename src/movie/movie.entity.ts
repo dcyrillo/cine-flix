@@ -10,10 +10,10 @@ import { Director } from "src/director/director.entity";
 export class Movie extends  BaseEntity{
 
     @PrimaryGeneratedColumn("uuid")
-    id:number;
+    id:string;
 
     @Column()
-    name:String;
+    name:string;
     
     @ManyToOne(type=> Category, categories=>categories.movies)
     categories:Category;
