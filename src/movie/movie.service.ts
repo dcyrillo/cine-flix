@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MovieRepository } from './movie.repository';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { Movie } from './movie.entity';
+import { GetCategoriesDto } from './Dto/filter.dto';
+import { Category } from 'src/category/category.entity';
 
 @Injectable()
 export class MovieService {
@@ -21,7 +23,11 @@ export class MovieService {
     });
   }
 
+<<<<<<< HEAD
   async delete(id: string): Promise<void> {
+=======
+  async delete(id:string): Promise<void> {
+>>>>>>> feature/filter_movies
        this.movieRepository.delete(id);
   }
 
@@ -33,6 +39,9 @@ export class MovieService {
     return this.movieRepository.findOne(id, { relations: ['category'] });
   }
 
+  async findOrder(filterDto:GetCategoriesDto):Promise<Movie[]>{
+    return this.movieRepository.getOrderCategory(filterDto);
+  }
   async update(
     id:string,
     movie:CreateMovieDto

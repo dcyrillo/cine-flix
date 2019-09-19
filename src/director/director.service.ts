@@ -14,7 +14,11 @@ export class DirectorService {
         return this.directorRepository.save(director);
       }
     
+<<<<<<< HEAD
       async delete(id: string): Promise<void> {
+=======
+      async delete(id:string): Promise<void> {
+>>>>>>> feature/filter_movies
          this.directorRepository.delete(id);
       }
     
@@ -22,7 +26,11 @@ export class DirectorService {
         return this.directorRepository.find();
       }
     
+<<<<<<< HEAD
       async findOne(id: string): Promise<Director> {
+=======
+      async findOne(id:string): Promise<Director> {
+>>>>>>> feature/filter_movies
         return this.directorRepository.findOne(id);
       }
     

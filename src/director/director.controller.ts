@@ -31,7 +31,11 @@ export class DirectorController {
 
   @Put('/:id')
   async update(
+<<<<<<< HEAD
     @Param('id') id: string,
+=======
+    @Param('id') id:string,
+>>>>>>> feature/filter_movies
     @Body() director: CreateDirectorDto
   ) {
     return this.directorService.update(id, director).then(data => {
@@ -42,7 +46,11 @@ export class DirectorController {
   }
 
   @Delete(':id')
+<<<<<<< HEAD
   async delete(@Param('id') id: string) {
+=======
+  async delete(@Param('id') id:string) {
+>>>>>>> feature/filter_movies
     return this.directorService.delete(id)
 
   }

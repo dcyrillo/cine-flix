@@ -4,6 +4,7 @@ export class CreateCategoryDto{
    
     @IsNotEmpty()
     id: string;
+
     @IsNotEmpty()
     search:string;
 

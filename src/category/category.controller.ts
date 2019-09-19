@@ -39,7 +39,11 @@ export class CategoryController {
     }
   
     @Delete(':id')
+<<<<<<< HEAD
     async delete(@Param('id') id: string) {
+=======
+    async delete(@Param('id') id:string) {
+>>>>>>> feature/filter_movies
       return this.categoriesService.delete(id);
 }
 

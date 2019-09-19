@@ -8,7 +8,11 @@ export class Director extends BaseEntity {
 
 
     @PrimaryGeneratedColumn("uuid")
+<<<<<<< HEAD
     id: string;
+=======
+    id:string;
+>>>>>>> feature/filter_movies
     @Column()
     name:string;
     @ManyToOne(type => Movie, movies => movies.director)
