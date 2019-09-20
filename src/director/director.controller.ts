@@ -1,12 +1,20 @@
-import { Controller, Get, Param, NotFoundException, Post, Body, Put, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  NotFoundException,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
 import { DirectorService } from './director.service';
 import { Director } from './director.entity';
 import { CreateDirectorDto } from './Dto/create-director.dto';
 
 @Controller('directors')
 export class DirectorController {
-
-  constructor(private directorService: DirectorService) { }
+  constructor(private directorService: DirectorService) {}
 
   @Get()
   async findAll(): Promise<Director[]> {
@@ -17,7 +25,7 @@ export class DirectorController {
   async findOne(@Param('id') id) {
     return this.directorService.findOne(id).then(data => {
       if (!data) {
-        throw new NotFoundException("id for director not found");
+        throw new NotFoundException('id for director not found');
       } else {
         return data;
       }
@@ -30,29 +38,16 @@ export class DirectorController {
   }
 
   @Put('/:id')
-  async update(
-<<<<<<< HEAD
-    @Param('id') id: string,
-=======
-    @Param('id') id:string,
->>>>>>> feature/filter_movies
-    @Body() director: CreateDirectorDto
-  ) {
+  async update(@Param('id') id: string, @Body() director: CreateDirectorDto) {
     return this.directorService.update(id, director).then(data => {
       if (!data) {
-        throw new NotFoundException("data or id not found for director");
+        throw new NotFoundException('data or id not found for director');
       }
     });
   }
 
   @Delete(':id')
-<<<<<<< HEAD
   async delete(@Param('id') id: string) {
-=======
-  async delete(@Param('id') id:string) {
->>>>>>> feature/filter_movies
-    return this.directorService.delete(id)
-
+    return this.directorService.delete(id);
   }
 }
-

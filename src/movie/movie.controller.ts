@@ -1,66 +1,66 @@
-import { Controller, Get, ParseIntPipe, Param, Post, ValidationPipe, UsePipes, Body, Delete, Patch, NotFoundException, Put, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Post,
+  Body,
+  Delete,
+  NotFoundException,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { MovieService } from './movie.service';
-import{Movie} from './movie.entity';
+import { Movie } from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { GetCategoriesDto } from './Dto/filter.dto';
-import { MovieRepository } from './movie.repository';
-
 
 @Controller('movies')
 export class MovieController {
-    constructor(private movieService:MovieService,){}
-    @Get()
-    async findAll(): Promise<Movie[]> {
-      return this.movieService.findAll();
-    }
-    @Get()
-    async findOrder(filterDto:  GetCategoriesDto): Promise<Movie[]> {
-      return this.movieService.findOrder(filterDto);
-    }
-    @Get()
-    async findAllOrder(@Query() filterDto:GetCategoriesDto): Promise<Movie[]> {
-      return this.movieService.findAll();
-    }
-    @Get('/:id')
-    async findOne(@Param('id') id) {
-      return this.movieService.findOne(id).then(data => {
-        if (!data) {
-          throw new NotFoundException("id not found");
-        } else {
-          return data;
-        }
-      });
-    }
-  
-    @Post()
-    async create(@Body() movie: CreateMovieDto) {
-      return this.movieService.create(movie);
-    }
-  
-    @Put('/:id')
-    async update(
-<<<<<<< HEAD
-      @Param('id') id: string,
-=======
-      @Param('id') id:string,
->>>>>>> feature/filter_movies
-      @Body() movie: CreateMovieDto
-    ) {
-      return this.movieService.update(id, movie).then(data => {
-        if (!data) {
-            throw new NotFoundException("data or id not found");
-        }
-      });
-    }
-  
-    @Delete(':id')
-     async delete(@Param('id') id:string) {
-      return this.movieService.delete(id)
-      
-    }
+  constructor(private movieService: MovieService) {}
+  @Get()
+  async findAll(): Promise<Movie[]> {
+    return this.movieService.findAll();
+  }
+  @Get()
+  async findOrder(filterDto: GetCategoriesDto): Promise<Movie[]> {
+    return this.movieService.findOrder(filterDto);
+  }
+  @Get()
+  async findAllOrder(@Query() filterDto: GetCategoriesDto): Promise<Movie[]> {
+    return this.movieService.findOrder(filterDto);
+  }
+  @Get('/:id')
+  async findOne(@Param('id') id) {
+    return this.movieService.findOne(id).then(data => {
+      if (!data) {
+        throw new NotFoundException('id not found');
+      } else {
+        return data;
+      }
+    });
   }
 
-    /*
+  @Post()
+  async create(@Body() movie: CreateMovieDto) {
+    return this.movieService.create(movie);
+  }
+
+  @Put('/:id')
+  async update(@Param('id') id: string, @Body() movie: CreateMovieDto) {
+    return this.movieService.update(id, movie).then(data => {
+      if (!data) {
+        throw new NotFoundException('data or id not found');
+      }
+    });
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.movieService.delete(id);
+  }
+}
+
+/*
     @Get('/:id')
     getMovieById(@Param('id',ParseIntPipe) id:string):Promise <Movie>{
 
@@ -125,4 +125,3 @@ export class MovieController {
 
         return this.movieService.updateDirector(id,director);
     }*/
-

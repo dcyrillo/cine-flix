@@ -1,20 +1,11 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
-export class CreateDirectorDto{
-   
-    id:string;
-<<<<<<< HEAD
+export class CreateDirectorDto {
+  id: string;
 
-    @IsNotEmpty()
-    name:string;
-    
-    @IsNotEmpty()
-    directorId:string;
-=======
-    @IsNotEmpty()
-    name:string;
-    @IsNotEmpty()
-    directorid:string;
->>>>>>> feature/filter_movies
-   
+  @IsNotEmpty()
+  name: string;
+
+  @IsNotEmpty()
+  directorId: string;
 }

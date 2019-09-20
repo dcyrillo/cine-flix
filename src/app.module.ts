@@ -8,7 +8,12 @@ import { CategoryModule } from './category/category.module';
 import { DirectorModule } from './director/director.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig),MovieModule, CategoryModule, DirectorModule],
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    MovieModule,
+    CategoryModule,
+    DirectorModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

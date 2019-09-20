@@ -52,7 +52,8 @@
     "moduleFileExtensions": [
       "js",
       "json",
-      "ts"
+      "ts",
+      "prettier"
     ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",

@@ -1,6 +1,3 @@
-
-export class GetCategoriesDto{
-    
-    categoryId:string;
-   
+export class GetCategoriesDto {
+  categoryId: string;
 }
