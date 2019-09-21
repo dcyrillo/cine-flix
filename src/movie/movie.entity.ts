@@ -38,7 +38,7 @@ export class Movie extends BaseEntity {
   year: number;
 
   @ValidateNested()
-  @ManyToOne(type => Director, directors => directors.movies)
+  @ManyToOne(() => Director, directors => directors.movies)
   @ValidatePromise()
   director: Director;
 
