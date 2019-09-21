@@ -1,9 +1,8 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, Min, ValidatePromise } from 'class-validator';
 
 export class CreateCategoryDto {
   @IsNotEmpty()
+  @Min(0)
+  @ValidatePromise()
   id: string;
-
-  @IsNotEmpty()
-  search: string;
 }
