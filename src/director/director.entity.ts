@@ -13,6 +13,7 @@ import {
   Length,
   IsString,
 } from 'class-validator';
+import { CreateDirectorDto } from './Dto/create-director.dto';
 
 @Entity()
 export class Director extends BaseEntity {
@@ -30,4 +31,11 @@ export class Director extends BaseEntity {
   @ValidatePromise()
   @ManyToOne(() => Movie, movies => movies.director)
   movies: Movie[];
+
+  createFromDto(data: CreateDirectorDto) {
+    this.name = data.name;
+    const movie = new Movie();
+    movie.id = data.movieId;
+    return this;
+  }
 }
