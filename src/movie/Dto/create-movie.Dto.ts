@@ -27,10 +27,4 @@ export class CreateMovieDto {
   @Length(0, 3)
   @IsNotEmpty()
   year: number;
-
-  @IsNotEmpty()
-  @IsString()
-  @IsNotEmpty()
-  @Length(0, 255)
-  director: string;
 }

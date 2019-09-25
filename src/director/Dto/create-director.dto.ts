@@ -19,6 +19,11 @@ export class CreateDirectorDto {
   @IsNotEmpty()
   name: string;
 
+  @Min(0)
+  @ValidatePromise()
+  @IsNotEmpty()
+  movieId: string;
+
   @IsNotEmpty()
   @Min(0)
   @ValidatePromise()
