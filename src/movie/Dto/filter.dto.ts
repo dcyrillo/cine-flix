@@ -4,5 +4,10 @@ export class GetCategoriesDto {
   @Min(0)
   @ValidatePromise()
   @IsNotEmpty()
-  categoryId: string;
+  categoriesId: string;
+
+  @Min(0)
+  @ValidatePromise()
+  @IsNotEmpty()
+  search: String;
 }

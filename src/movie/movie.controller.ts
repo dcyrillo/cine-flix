@@ -8,6 +8,7 @@ import {
   NotFoundException,
   Put,
   Query,
+  ValidationPipe,
 } from '@nestjs/common';
 import { MovieService } from './movie.service';
 import { Movie } from './movie.entity';
@@ -22,12 +23,10 @@ export class MovieController {
     return this.movieService.findAll();
   }
   @Get()
-  async findOrder(filterDto: GetCategoriesDto): Promise<Movie[]> {
-    return this.movieService.findOrder(filterDto);
-  }
-  @Get()
-  async findAllOrder(@Query() filterDto: GetCategoriesDto): Promise<Movie[]> {
-    return this.movieService.findOrder(filterDto);
+  async getMovie(
+    @Query(ValidationPipe) filterDto: GetCategoriesDto,
+  ): Promise<Movie[]> {
+    return this.movieService.getMovie(filterDto);
   }
   @Get('/:id')
   async findOne(@Param('id') id) {
@@ -59,69 +58,3 @@ export class MovieController {
     return this.movieService.delete(id);
   }
 }
-
-/*
-    @Get('/:id')
-    getMovieById(@Param('id',ParseIntPipe) id:string):Promise <Movie>{
-
-        return this.movieService.getMovieById(id);
-    }
-  
-   
-
-    @Post()
-    @UsePipes(ValidationPipe)
-    createMovie(@Body() createMovieDto:CreateMovieDto):Promise<Movie>{
-    
-    return this.movieService.createMovie(createMovieDto);        
-
-    }
-    
-    @Delete('/:id')
-    deleteMOvie(@Param() id:string):Promise<void>{
-        return this.movieService.deleteMovie(id);
-        
-    }
-
-    @Patch('/:id/name')
-    updateNameMovie(
-<<<<<<< HEAD
-        @Param('id',ParseIntPipe) id:number,
-=======
-        @Param('id',ParseIntPipe) id:string,
->>>>>>> feature/filter_movies
-        @Body('name',ValidationPipe) name:string 
-    ):Promise<Movie>{
-
-        return this.movieService.updateName(id,name);
-    }
-
-    @Patch('/:id/category')
-    updateCategoryMovie(
-        @Param('id',ParseIntPipe) id:string,
-        
-    ):Promise<Movie>{
-
-        return this.movieService.updateCategory(id);
-    }
-
-    @Patch('/:id/year')
-    updateYearMovie(
-        @Param('id',ParseIntPipe) id:string,
-        @Body('year',ParseIntPipe) year:number 
-    ):Promise<Movie>{
-
-        return this.movieService.updateYear(id,year);
-    }
-    @Patch('/:id/director')
-    updateDirectorMovie(
-<<<<<<< HEAD
-        @Param('id',ParseIntPipe) id:number,
-=======
-        @Param('id',ParseIntPipe) id:string,
->>>>>>> feature/filter_movies
-        @Body('director',ValidationPipe) director:string 
-    ):Promise<Movie>{
-
-        return this.movieService.updateDirector(id,director);
-    }*/
