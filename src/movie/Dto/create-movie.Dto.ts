@@ -7,7 +7,11 @@ import {
 } from 'class-validator';
 
 export class CreateMovieDto {
+  @Min(0)
+  @ValidatePromise()
   @IsNotEmpty()
+  movieId: string;
+
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)
