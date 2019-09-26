@@ -18,16 +18,18 @@ import { GetCategoriesDto } from './Dto/filter.dto';
 @Controller('movies')
 export class MovieController {
   constructor(private movieService: MovieService) {}
+
   @Get()
-  async findAll(): Promise<Movie[]> {
-    return this.movieService.findAll();
-  }
-  @Get()
-  async getMovie(
+  async findAll(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
   ): Promise<Movie[]> {
-    return this.movieService.getMovie(filterDto);
+    if (Object.keys(filterDto).length) {
+      return this.movieService.getMoviesWithFilters(filterDto);
+    } else {
+      return this.movieService.findAll();
+    }
   }
+
   @Get('/:id')
   async findOne(@Param('id') id) {
     return this.movieService.findOne(id).then(data => {
