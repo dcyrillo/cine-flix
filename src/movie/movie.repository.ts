@@ -4,17 +4,17 @@ import { GetCategoriesDto } from './Dto/filter.dto';
 
 @EntityRepository(Movie)
 export class MovieRepository extends Repository<Movie> {
-  async getMovie(filterDto: GetCategoriesDto) {
-    const { categoriesId, search } = filterDto;
-    const query = this.createQueryBuilder('movies');
+  async getMovie(filterDto: GetCategoriesDto): Promise<Movie[]> {
+    const { categoriesId } = filterDto;
+
+    const query = this.createQueryBuilder('movie');
 
     if (categoriesId) {
       query.andWhere('movie.categoriesId=:categoriesId', { categoriesId });
     }
-    if (search) {
-      query.andWhere('movie.name=:search', { search });
-    }
-    const movie = await query.getMany();
-    return movie;
+
+    const movies = await query.getMany();
+
+    return movies;
   }
 }
