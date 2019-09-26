@@ -15,19 +15,23 @@ import {
   Length,
   IsString,
 } from 'class-validator';
+import { ApiModelProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Movie extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
+  @ApiModelProperty()
   id: string;
 
   @Column()
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)
+  @ApiModelProperty()
   name: string;
 
   @ValidateNested()
+  @ApiModelProperty()
   @ValidatePromise()
   @ManyToOne(() => Category, categories => categories.movies)
   categories: Category;
@@ -35,11 +39,13 @@ export class Movie extends BaseEntity {
   @IsNotEmpty()
   @Column()
   @Length(0, 3)
+  @ApiModelProperty()
   year: number;
 
   @ValidateNested()
   @ManyToOne(() => Director, directors => directors.movies)
   @ValidatePromise()
+  @ApiModelProperty()
   director: Director;
 
   createFromDto(data: CreateMovieDto) {

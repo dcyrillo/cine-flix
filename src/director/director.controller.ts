@@ -11,7 +11,9 @@ import {
 import { DirectorService } from './director.service';
 import { Director } from './director.entity';
 import { CreateDirectorDto } from './Dto/create-director.dto';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('directors')
 @Controller('directors')
 export class DirectorController {
   constructor(private directorService: DirectorService) {}
