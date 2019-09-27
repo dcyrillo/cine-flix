@@ -11,7 +11,9 @@ import {
 import { CategoryService } from './category.service';
 import { Category } from './category.entity';
 import { CreateCategoryDto } from './Dto/create-category.dto';
+import { ApiUseTags } from '@nestjs/swagger';
 
+@ApiUseTags('categories')
 @Controller('categories')
 export class CategoryController {
   constructor(private readonly categoriesService: CategoryService) {}
