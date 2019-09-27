@@ -14,10 +14,7 @@ import {
   IsString,
 } from 'class-validator';
 import { CreateDirectorDto } from './Dto/create-director.dto';
-<<<<<<< HEAD
-=======
 import { ApiModelProperty } from '@nestjs/swagger';
->>>>>>> develop
 
 @Entity()
 export class Director extends BaseEntity {
@@ -41,14 +38,8 @@ export class Director extends BaseEntity {
 
   createFromDto(data: CreateDirectorDto) {
     this.name = data.name;
-<<<<<<< HEAD
     const movie = new Movie();
     movie.id = data.movieId;
-=======
-    const director = new Director();
-    director.id = data.directorId;
-
->>>>>>> develop
     return this;
   }
 }
