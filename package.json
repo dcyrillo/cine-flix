@@ -7,7 +7,7 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "main.js",
+  "main": "main.ts",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
