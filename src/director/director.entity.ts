@@ -1,3 +1,4 @@
+import { Movie } from './../movie/movie.entity';
 import {
   Entity,
   BaseEntity,
@@ -5,7 +6,7 @@ import {
   Column,
   ManyToOne,
 } from 'typeorm';
-import { Movie } from 'src/movie/movie.entity';
+
 import {
   ValidateNested,
   ValidatePromise,
