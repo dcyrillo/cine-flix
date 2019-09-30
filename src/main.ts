@@ -17,8 +17,11 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
-  const PORT = process.env.PORT || 3000;
-  await app.listen(PORT, () => {
+  const express = require('express');
+  const appl = express();
+  appl.set('port', process.env.PORT || 3000);
+  app.use(express.static(__dirname + '/public'));
+  await app.listen(appl.get('port'), () => {
     console.log('Servidor rodando');
   });
 }
