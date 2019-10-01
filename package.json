@@ -7,7 +7,7 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "main.js",
+  "main": "dist/src/main.js",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "client": "npm start --prefix client",
