@@ -1,5 +1,5 @@
 import { DirectorModule } from './director/director.module';
-import { MovieModule } from './../cine-flix/src/movie/movie.module';
+import { MovieModule } from './movie/movie.module';
 import { Routes } from 'nest-router';
 import { CategoryModule } from './category/category.module';
 
