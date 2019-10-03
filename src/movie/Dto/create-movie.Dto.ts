@@ -8,10 +8,6 @@ import {
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class CreateMovieDto {
-  @ValidatePromise()
-  @IsNotEmpty()
-  movieId: string;
-
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)
