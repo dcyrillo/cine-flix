@@ -1,3 +1,6 @@
+import { Director } from './../director/director.entity';
+import { Category } from './../category/category.entity';
+
 import {
   BaseEntity,
   Entity,
@@ -5,9 +8,9 @@ import {
   Column,
   ManyToOne,
 } from 'typeorm';
-import { Category } from 'src/category/category.entity';
+
 import { CreateMovieDto } from './Dto/create-movie.Dto';
-import { Director } from 'src/director/director.entity';
+
 import {
   ValidateNested,
   ValidatePromise,
@@ -49,10 +52,12 @@ export class Movie extends BaseEntity {
   director: Director;
 
   createFromDto(data: CreateMovieDto) {
+    this.id = data.movieId;
     this.name = data.name;
     this.year = data.year;
     const director = new Director();
     director.id = data.directorId;
+    this.director = director;
     const category = new Category();
     category.id = data.categoriesId;
     this.categories = category;

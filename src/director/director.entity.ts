@@ -1,3 +1,4 @@
+import { Movie } from './../movie/movie.entity';
 import {
   Entity,
   BaseEntity,
@@ -5,7 +6,7 @@ import {
   Column,
   ManyToOne,
 } from 'typeorm';
-import { Movie } from 'src/movie/movie.entity';
+
 import {
   ValidateNested,
   ValidatePromise,
@@ -38,9 +39,8 @@ export class Director extends BaseEntity {
 
   createFromDto(data: CreateDirectorDto) {
     this.name = data.name;
-    const director = new Director();
-    director.id = data.directorId;
-
+    const movie = new Movie();
+    movie.id = data.movieId;
     return this;
   }
 }

@@ -8,6 +8,11 @@ import {
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class CreateMovieDto {
+  @Min(0)
+  @ValidatePromise()
+  @IsNotEmpty()
+  movieId: string;
+
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)
@@ -31,10 +36,4 @@ export class CreateMovieDto {
   @IsNotEmpty()
   @ApiModelProperty()
   year: number;
-
-  @IsNotEmpty()
-  @IsString()
-  @IsNotEmpty()
-  @Length(0, 255)
-  director: string;
 }

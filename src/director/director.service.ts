@@ -8,7 +8,12 @@ export class DirectorService {
   constructor(private readonly directorRepository: DirectorRepository) {}
 
   async create(director: CreateDirectorDto) {
-    return this.directorRepository.save(director);
+    
+    const auxDirector = new Director().createFromDto(director);
+    return this.directorRepository.save(auxDirector).then(data => {
+      auxDirector.id=data.id;
+      return auxDirector;
+    });
   }
 
   async delete(id: string): Promise<void> {
