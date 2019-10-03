@@ -14,14 +14,12 @@ async function bootstrap() {
     .addTag('directors')
     .addTag('categories')
     .build();
-  dotenvFlow.config();
+
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
   app.useGlobalPipes(new ValidationPipe());
-  app.enableCors();
-
-  const express = require('express');
-  await app.listen(process.env.PORT || 3000);
+  dotenvFlow.config();
+  await app.listen(3000);
 }
 bootstrap();
