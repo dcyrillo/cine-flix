@@ -14,13 +14,4 @@ export class CreateDirectorDto {
   @IsNotEmpty()
   @ApiModelProperty()
   name: string;
-
-  @ValidatePromise()
-  @IsNotEmpty()
-  movieId: string;
-
-  @IsNotEmpty()
-  @ValidatePromise()
-  @ApiModelProperty()
-  directorId: string;
 }
