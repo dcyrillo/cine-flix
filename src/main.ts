@@ -21,7 +21,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
 
-  const db = require('./config/express');
-  await app.listen(db || 3000);
+  const express = require('express');
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
