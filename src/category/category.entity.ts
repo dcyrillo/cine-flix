@@ -15,6 +15,7 @@ import {
   ValidatePromise,
 } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
+import { CreateCategoryDto } from './Dto/create-category.dto';
 
 @Entity()
 export class Category extends BaseEntity {
@@ -34,4 +35,10 @@ export class Category extends BaseEntity {
   @ApiModelProperty()
   @ManyToOne(() => Movie, movies => movies.categories)
   movies: Movie[];
+
+  createFromDto(data: CreateCategoryDto) {
+    this.name = data.name;
+
+    return this;
+  }
 }
