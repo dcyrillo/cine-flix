@@ -41,7 +41,6 @@ export class Movie extends BaseEntity {
 
   @IsNotEmpty()
   @Column()
-  @Length(0, 3)
   @ApiModelProperty()
   year: number;
 

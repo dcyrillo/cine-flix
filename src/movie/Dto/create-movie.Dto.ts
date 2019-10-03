@@ -29,7 +29,6 @@ export class CreateMovieDto {
   directorId: string;
 
   @IsNotEmpty()
-  @Length(0, 3)
   @IsNotEmpty()
   @ApiModelProperty()
   year: number;
