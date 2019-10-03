@@ -1,1 +1,1 @@
-web: npm run prestart:prod
+web: node dist/src/main.js
