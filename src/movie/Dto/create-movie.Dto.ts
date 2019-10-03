@@ -8,7 +8,6 @@ import {
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class CreateMovieDto {
-  @Min(0)
   @ValidatePromise()
   @IsNotEmpty()
   movieId: string;
@@ -19,13 +18,11 @@ export class CreateMovieDto {
   @ApiModelProperty()
   name: string;
 
-  @Min(0)
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
   categoriesId: string;
 
-  @Min(0)
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
