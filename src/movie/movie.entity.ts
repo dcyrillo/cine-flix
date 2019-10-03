@@ -55,9 +55,11 @@ export class Movie extends BaseEntity {
     this.year = data.year;
     const director = new Director();
     director.id = data.directorId;
+    director.name;
     this.director = director;
     const category = new Category();
     category.id = data.categoriesId;
+    category.name;
     this.categories = category;
 
     return this;
