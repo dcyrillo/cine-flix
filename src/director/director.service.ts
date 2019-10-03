@@ -8,10 +8,9 @@ export class DirectorService {
   constructor(private readonly directorRepository: DirectorRepository) {}
 
   async create(director: CreateDirectorDto) {
-    
     const auxDirector = new Director().createFromDto(director);
     return this.directorRepository.save(auxDirector).then(data => {
-      auxDirector.id=data.id;
+      auxDirector.id = data.id;
       return auxDirector;
     });
   }
@@ -28,9 +27,9 @@ export class DirectorService {
     return this.directorRepository.findOne(id);
   }
 
-  async update(id: string, director: CreateDirectorDto): Promise<Director> {
-    if (await this.directorRepository.findOne(id)) {
-      director.id = id;
+  async update(name: string, director: CreateDirectorDto): Promise<Director> {
+    if (await this.directorRepository.findOne(name)) {
+      director.name = name;
       return this.directorRepository.save(director);
     } else {
       return undefined;

@@ -23,9 +23,9 @@ export class CategoryService {
     return this.categoryRepository.findOne(id);
   }
 
-  async update(id: string, category: CreateCategoryDto): Promise<Category> {
-    if (await this.categoryRepository.findOne(id)) {
-      category.id = id;
+  async update(name: string, category: CreateCategoryDto): Promise<Category> {
+    if (await this.categoryRepository.findOne(name)) {
+      category.name = name;
       return this.categoryRepository.save(category);
     } else {
       return undefined;
