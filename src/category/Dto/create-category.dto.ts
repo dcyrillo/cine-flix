@@ -1,10 +1,10 @@
-import { IsNotEmpty, Min, ValidatePromise } from 'class-validator';
+import { IsNotEmpty, IsString, ValidatePromise } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 export class CreateCategoryDto {
   @IsNotEmpty()
-  @Min(0)
+  @IsString()
   @ValidatePromise()
   @ApiModelProperty()
-  id: string;
+  name: string;
 }
