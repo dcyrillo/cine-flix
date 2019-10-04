@@ -14,7 +14,7 @@ import { MovieService } from './movie.service';
 import { Movie } from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { GetCategoriesDto } from './Dto/filter.dto';
-import { ApiUseTags, ApiModelProperty } from '@nestjs/swagger';
+import { ApiUseTags } from '@nestjs/swagger';
 import { UpdateMovieDto } from './Dto/update-movie.Dto';
 
 @ApiUseTags('movies')
@@ -22,7 +22,6 @@ import { UpdateMovieDto } from './Dto/update-movie.Dto';
 export class MovieController {
   constructor(private movieService: MovieService) {}
 
-  @ApiModelProperty()
   @Get()
   async findAll(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
