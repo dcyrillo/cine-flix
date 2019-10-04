@@ -22,4 +22,10 @@ export class UpdateMovieDto {
   @IsNotEmpty()
   @ApiModelProperty()
   year: number;
+
+  @IsString()
+  @IsNotEmpty()
+  @Length(0, 255)
+  @ApiModelProperty()
+  Image: string;
 }
