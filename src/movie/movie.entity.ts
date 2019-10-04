@@ -17,6 +17,8 @@ import {
   IsNotEmpty,
   Length,
   IsString,
+  IsNumber,
+  Min,
 } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
@@ -33,6 +35,12 @@ export class Movie extends BaseEntity {
   @ApiModelProperty()
   name: string;
 
+  @Column()
+  @IsString()
+  @IsNotEmpty()
+  @ApiModelProperty()
+  image: string;
+
   @ValidateNested()
   @ApiModelProperty()
   @ValidatePromise()
@@ -42,6 +50,8 @@ export class Movie extends BaseEntity {
   @ApiModelProperty()
   @IsNotEmpty()
   @Column()
+  @IsNumber()
+  @Min(1900)
   year: number;
 
   @ApiModelProperty()
@@ -60,6 +70,18 @@ export class Movie extends BaseEntity {
     const category = new Category();
     category.id = data.categoriesId;
     category.name;
+    this.categories = category;
+
+    return this;
+  }
+  UpdateFromDto(data: CreateMovieDto) {
+    this.name = data.name;
+    this.year = data.year;
+    const director = new Director();
+    director.id = data.directorId;
+    this.director = director;
+    const category = new Category();
+    category.id = data.categoriesId;
     this.categories = category;
 
     return this;

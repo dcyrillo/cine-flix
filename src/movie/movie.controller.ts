@@ -15,12 +15,14 @@ import { Movie } from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { GetCategoriesDto } from './Dto/filter.dto';
 import { ApiUseTags, ApiModelProperty } from '@nestjs/swagger';
+import { UpdateMovieDto } from './Dto/update-movie.Dto';
 
 @ApiUseTags('movies')
 @Controller('movies')
 export class MovieController {
   constructor(private movieService: MovieService) {}
 
+  @ApiModelProperty()
   @Get()
   async findAll(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
@@ -50,7 +52,7 @@ export class MovieController {
   }
 
   @Put('/:id')
-  async update(@Param('id') id: string, @Body() movie: CreateMovieDto) {
+  async update(@Param('id') id: string, @Body() movie: UpdateMovieDto) {
     return this.movieService.update(id, movie).then(data => {
       if (!data) {
         throw new NotFoundException('data or id not found');

@@ -4,6 +4,7 @@ import { MovieRepository } from './movie.repository';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { Movie } from './movie.entity';
 import { GetCategoriesDto } from './Dto/filter.dto';
+import { UpdateMovieDto } from './Dto/update-movie.Dto';
 
 @Injectable()
 export class MovieService {
@@ -41,9 +42,9 @@ export class MovieService {
     return this.movieRepository.getMovie(filterDto);
   }
 
-  async update(id: string, movie: CreateMovieDto): Promise<Movie> {
+  async update(id: string, movie: UpdateMovieDto): Promise<Movie> {
     if (await this.movieRepository.findOne(id)) {
-      const auxMovie = new Movie().createFromDto(movie);
+      const auxMovie = new Movie().UpdateFromDto(movie);
       auxMovie.id = id;
       return this.movieRepository.save(auxMovie);
     } else {

@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString, Length, ValidatePromise } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class CreateMovieDto {
+export class UpdateMovieDto {
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)
@@ -18,7 +18,8 @@ export class CreateMovieDto {
   @ApiModelProperty()
   directorId: string;
 
-  @ApiModelProperty()
   @IsNotEmpty()
+  @IsNotEmpty()
+  @ApiModelProperty()
   year: number;
 }
