@@ -12,6 +12,7 @@ import { CategoryService } from './category.service';
 import { Category } from './category.entity';
 import { CreateCategoryDto } from './Dto/create-category.dto';
 import { ApiUseTags } from '@nestjs/swagger';
+import { UpdateCategoryDto } from './Dto/update-category.dto';
 
 @ApiUseTags('categories')
 @Controller('categories')
@@ -40,7 +41,7 @@ export class CategoryController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() category: CreateCategoryDto) {
+  async update(@Param('id') id: string, @Body() category: UpdateCategoryDto) {
     return this.categoriesService.update(id, category).then(data => {
       if (!data) {
         throw new NotFoundException('Cannot put category');

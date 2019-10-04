@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Category } from './category.entity';
 import { CategoryRepository } from './category.repository';
 import { CreateCategoryDto } from './Dto/create-category.dto';
+import { UpdateCategoryDto } from './Dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
@@ -23,7 +24,7 @@ export class CategoryService {
     return this.categoryRepository.findOne(id);
   }
 
-  async update(name: string, category: CreateCategoryDto): Promise<Category> {
+  async update(name: string, category: UpdateCategoryDto): Promise<Category> {
     if (await this.categoryRepository.findOne(name)) {
       category.name = name;
       return this.categoryRepository.save(category);
