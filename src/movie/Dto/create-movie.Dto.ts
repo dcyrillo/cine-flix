@@ -26,5 +26,5 @@ export class CreateMovieDto {
 
   @ApiModelProperty()
   @IsNotEmpty()
-  year: Number;
+  year: number;
 }

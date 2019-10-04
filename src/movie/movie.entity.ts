@@ -42,7 +42,7 @@ export class Movie extends BaseEntity {
   @ApiModelProperty()
   @IsNotEmpty()
   @Column()
-  year: Number;
+  year: number;
 
   @ApiModelProperty()
   @ValidateNested()
