@@ -14,7 +14,7 @@ import { MovieService } from './movie.service';
 import { Movie } from './movie.entity';
 import { CreateMovieDto } from './Dto/create-movie.Dto';
 import { GetCategoriesDto } from './Dto/filter.dto';
-import { ApiUseTags } from '@nestjs/swagger';
+import { ApiUseTags, ApiModelProperty } from '@nestjs/swagger';
 
 @ApiUseTags('movies')
 @Controller('movies')
@@ -26,6 +26,7 @@ export class MovieController {
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
   ): Promise<Movie[]> {
     if (Object.keys(filterDto).length) {
+      console.log('sorry,but movie not found');
       return this.movieService.getMoviesWithFilters(filterDto);
     } else {
       return this.movieService.findAll();

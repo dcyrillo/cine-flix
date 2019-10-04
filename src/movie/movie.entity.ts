@@ -39,15 +39,15 @@ export class Movie extends BaseEntity {
   @ManyToOne(() => Category, categories => categories.movies)
   categories: Category;
 
+  @ApiModelProperty()
   @IsNotEmpty()
   @Column()
-  @ApiModelProperty()
   year: number;
 
+  @ApiModelProperty()
   @ValidateNested()
   @ManyToOne(() => Director, directors => directors.movies)
   @ValidatePromise()
-  @ApiModelProperty()
   director: Director;
 
   createFromDto(data: CreateMovieDto) {

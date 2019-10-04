@@ -20,7 +20,6 @@ import { ApiModelProperty } from '@nestjs/swagger';
 @Entity()
 export class Director extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  @ApiModelProperty()
   id: string;
 
   @Column()
