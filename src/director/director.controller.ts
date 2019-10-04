@@ -12,6 +12,7 @@ import { DirectorService } from './director.service';
 import { Director } from './director.entity';
 import { CreateDirectorDto } from './Dto/create-director.dto';
 import { ApiUseTags } from '@nestjs/swagger';
+import { UpdateDirectorDto } from './Dto/update-director.dto';
 
 @ApiUseTags('directors')
 @Controller('directors')
@@ -40,7 +41,7 @@ export class DirectorController {
   }
 
   @Put('/:id')
-  async update(@Param('id') id: string, @Body() director: CreateDirectorDto) {
+  async update(@Param('id') id: string, @Body() director: UpdateDirectorDto) {
     return this.directorService.update(id, director).then(data => {
       if (!data) {
         throw new NotFoundException('data or id not found for director');

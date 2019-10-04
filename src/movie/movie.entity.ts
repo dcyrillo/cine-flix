@@ -21,6 +21,7 @@ import {
   Min,
 } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
+import { UpdateMovieDto } from './Dto/update-movie.Dto';
 
 @Entity()
 export class Movie extends BaseEntity {
@@ -75,7 +76,7 @@ export class Movie extends BaseEntity {
 
     return this;
   }
-  UpdateFromDto(data: CreateMovieDto) {
+  UpdateFromDto(data: UpdateMovieDto) {
     this.name = data.name;
     this.year = data.year;
     const director = new Director();

@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString, Length } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class CreateDirectorDto {
+export class UpdateDirectorDto {
   @IsString()
   @IsNotEmpty()
   @Length(0, 255)

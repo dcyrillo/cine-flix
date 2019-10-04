@@ -16,6 +16,7 @@ import {
 } from 'class-validator';
 import { CreateDirectorDto } from './Dto/create-director.dto';
 import { ApiModelProperty } from '@nestjs/swagger';
+import { UpdateDirectorDto } from './Dto/update-director.dto';
 
 @Entity()
 export class Director extends BaseEntity {
@@ -43,6 +44,12 @@ export class Director extends BaseEntity {
   movies: Movie[];
 
   createFromDto(data: CreateDirectorDto) {
+    this.name = data.name;
+    this.image = data.image;
+    return this;
+  }
+
+  updateFromDto(data: UpdateDirectorDto) {
     this.name = data.name;
     this.image = data.image;
     return this;

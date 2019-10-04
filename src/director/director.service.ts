@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DirectorRepository } from './director.repository';
 import { CreateDirectorDto } from './Dto/create-director.dto';
 import { Director } from './director.entity';
+import { UpdateDirectorDto } from './Dto/update-director.dto';
 
 @Injectable()
 export class DirectorService {
@@ -27,7 +28,7 @@ export class DirectorService {
     return this.directorRepository.findOne(id);
   }
 
-  async update(name: string, director: CreateDirectorDto): Promise<Director> {
+  async update(id: string, director: UpdateDirectorDto): Promise<Director> {
     if (await this.directorRepository.findOne(name)) {
       director.name = name;
       return this.directorRepository.save(director);
