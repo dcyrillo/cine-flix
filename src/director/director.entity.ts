@@ -44,7 +44,7 @@ export class Director extends BaseEntity {
 
   createFromDto(data: CreateDirectorDto) {
     this.name = data.name;
-
+    this.image = data.image;
     return this;
   }
 }

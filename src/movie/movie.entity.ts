@@ -63,6 +63,7 @@ export class Movie extends BaseEntity {
   createFromDto(data: CreateMovieDto) {
     this.name = data.name;
     this.year = data.year;
+    this.image = data.Image;
     const director = new Director();
     director.id = data.directorId;
     director.name;

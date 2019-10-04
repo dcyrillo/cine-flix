@@ -14,4 +14,10 @@ export class CreateDirectorDto {
   @IsNotEmpty()
   @ApiModelProperty()
   name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @Length(0, 255)
+  @ApiModelProperty()
+  image: string;
 }

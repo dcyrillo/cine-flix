@@ -8,6 +8,12 @@ export class CreateMovieDto {
   @ApiModelProperty()
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
+  @Length(0, 255)
+  @ApiModelProperty()
+  Image: string;
+
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
