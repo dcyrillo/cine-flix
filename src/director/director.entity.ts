@@ -30,6 +30,12 @@ export class Director extends BaseEntity {
   @ApiModelProperty()
   name: string;
 
+  @Column()
+  @IsString()
+  @IsNotEmpty()
+  @ApiModelProperty()
+  image: string;
+
   @ValidateNested()
   @ValidatePromise()
   @ApiModelProperty()
