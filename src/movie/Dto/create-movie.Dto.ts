@@ -24,7 +24,6 @@ export class CreateMovieDto {
 
   @IsString()
   @IsNotEmpty()
-  @Length(0, 255)
   @ApiModelProperty()
   Image: string;
 }
