@@ -67,7 +67,7 @@ export class Movie extends BaseEntity {
     director.id = data.directorId;
     this.director = director;
     const category = new Category();
-    category.id = data.categoriesId;
+    category.id = data.categoryId;
     this.categories = category;
 
     return this;
@@ -79,7 +79,7 @@ export class Movie extends BaseEntity {
     director.id = data.directorId;
     this.director = director;
     const category = new Category();
-    category.id = data.categoriesId;
+    category.id = data.categoryId;
     this.categories = category;
 
     return this;

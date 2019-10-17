@@ -80,12 +80,12 @@ CREATE TABLE `movie` (
   `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` int(11) NOT NULL,
-  `categoriesId` varchar(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categoryId` varchar(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `directorId` varchar(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_1a3a30bbfb1d15135f023e2e99f` (`categoriesId`),
+  KEY `FK_1a3a30bbfb1d15135f023e2e99f` (`categoryId`),
   KEY `FK_a32a80a88aff67851cf5b75d1cb` (`directorId`),
-  CONSTRAINT `FK_1a3a30bbfb1d15135f023e2e99f` FOREIGN KEY (`categoriesId`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_1a3a30bbfb1d15135f023e2e99f` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_a32a80a88aff67851cf5b75d1cb` FOREIGN KEY (`directorId`) REFERENCES `director` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

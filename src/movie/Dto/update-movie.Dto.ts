@@ -11,7 +11,7 @@ export class UpdateMovieDto {
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
-  categoriesId: string;
+  categoryId: string;
 
   @ValidatePromise()
   @IsNotEmpty()

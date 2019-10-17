@@ -4,5 +4,5 @@ import { ApiModelProperty } from '@nestjs/swagger';
 export class GetCategoriesDto {
   @ValidatePromise()
   @ApiModelProperty()
-  categoriesId: string;
+  categoryId: string;
 }
