@@ -11,14 +11,13 @@ export class UpdateMovieDto {
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
-  categoriesId: string;
+  categoryId: string;
 
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
   directorId: string;
 
-  @IsNotEmpty()
   @IsNotEmpty()
   @ApiModelProperty()
   year: number;
@@ -27,5 +26,5 @@ export class UpdateMovieDto {
   @IsNotEmpty()
   @Length(0, 255)
   @ApiModelProperty()
-  Image: string;
+  image: string;
 }

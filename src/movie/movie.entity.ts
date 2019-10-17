@@ -64,13 +64,13 @@ export class Movie extends BaseEntity {
   createFromDto(data: CreateMovieDto) {
     this.name = data.name;
     this.year = data.year;
-    this.image = data.Image;
+    this.image = data.image;
     const director = new Director();
     director.id = data.directorId;
     director.name;
     this.director = director;
     const category = new Category();
-    category.id = data.categoriesId;
+    category.id = data.categoryId;
     category.name;
     this.categories = category;
 
@@ -83,7 +83,7 @@ export class Movie extends BaseEntity {
     director.id = data.directorId;
     this.director = director;
     const category = new Category();
-    category.id = data.categoriesId;
+    category.id = data.categoryId;
     this.categories = category;
 
     return this;

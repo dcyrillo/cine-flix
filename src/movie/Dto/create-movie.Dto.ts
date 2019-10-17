@@ -11,7 +11,7 @@ export class CreateMovieDto {
   @ValidatePromise()
   @IsNotEmpty()
   @ApiModelProperty()
-  categoriesId: string;
+  categoryId: string;
 
   @ValidatePromise()
   @IsNotEmpty()
@@ -25,5 +25,5 @@ export class CreateMovieDto {
   @IsString()
   @IsNotEmpty()
   @ApiModelProperty()
-  Image: string;
+  image: string;
 }
