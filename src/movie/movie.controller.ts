@@ -25,9 +25,8 @@ export class MovieController {
   @Get()
   async findAll(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
-  ): Promise<Movie[]> {
+  ): Promise<any[]> {
     if (Object.keys(filterDto).length) {
-      console.log('sorry,but movie not found');
       return this.movieService.getMoviesWithFilters(filterDto);
     } else {
       return this.movieService.findAll();

@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 
 import {
@@ -33,7 +34,7 @@ export class Category extends BaseEntity {
   @ValidateNested()
   @ValidatePromise()
   @ApiModelProperty()
-  @ManyToOne(() => Movie, movies => movies.categories)
+  @OneToMany(() => Movie, movies => movies.category)
   movies: Movie[];
 
   createFromDto(data: CreateCategoryDto) {

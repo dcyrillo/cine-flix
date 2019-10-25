@@ -20,6 +20,6 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
   dotenvFlow.config();
-  await app.listen(process.env.PORT || 5000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
