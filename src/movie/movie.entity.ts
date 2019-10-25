@@ -95,6 +95,7 @@ export class Movie extends BaseEntity {
       id: this.id,
       name: this.name,
       year: this.year,
+      image: this.image,
       directorId: director,
       categoryId: category,
     };
