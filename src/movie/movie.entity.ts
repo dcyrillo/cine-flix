@@ -44,8 +44,8 @@ export class Movie extends BaseEntity {
   @ValidateNested()
   @ApiModelProperty()
   @ValidatePromise()
-  @ManyToOne(() => Category, categories => categories.movies)
-  categories: Category;
+  @ManyToOne(() => Category, category => category.movies)
+  category: Category;
 
   @ApiModelProperty()
   @IsNotEmpty()
@@ -68,10 +68,11 @@ export class Movie extends BaseEntity {
     this.director = director;
     const category = new Category();
     category.id = data.categoryId;
-    this.categories = category;
+    this.category = category;
 
     return this;
   }
+
   UpdateFromDto(data: CreateMovieDto) {
     this.name = data.name;
     this.year = data.year;
@@ -80,8 +81,19 @@ export class Movie extends BaseEntity {
     this.director = director;
     const category = new Category();
     category.id = data.categoryId;
-    this.categories = category;
+    this.category = category;
 
     return this;
+  }
+  toJson() {
+    const director = this.director ? this.director.id : '';
+    const category = this.category ? this.category.id : '';
+    return {
+      id: this.id,
+      name: this.name,
+      year: this.year,
+      directorId: director,
+      categoryId: category,
+    };
   }
 }

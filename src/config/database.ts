@@ -14,4 +14,10 @@ export default {
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
 
   synchronize: process.env.TYPEORM_SYNCHRONIZE,
+
+  migrations: [__dirname + '/migrations/*{.ts,.js}'],
+
+  cli: {
+    migrationsDir: 'src/migrations',
+  },
 };

@@ -26,20 +26,29 @@ export class MovieService {
     this.movieRepository.delete(id);
   }
 
-  async findAll(): Promise<Movie[]> {
-    return this.movieRepository.find({ relations: ['categories', 'director'] });
+  async findAll(): Promise<any[]> {
+    return this.movieRepository
+      .find({ relations: ['category', 'director'] })
+      .then(data => {
+        const aux = data.map(element => element.toJson());
+
+        return aux;
+      });
   }
 
   async findOne(id: string): Promise<Movie> {
     return this.movieRepository.findOne(id, {
-      relations: ['categories', 'director'],
+      relations: ['category', 'director'],
     });
   }
 
   async getMoviesWithFilters(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
-  ): Promise<Movie[]> {
-    return this.movieRepository.getMovie(filterDto);
+  ): Promise<any[]> {
+    return this.movieRepository.getMovie(filterDto).then(data => {
+      const aux = data.map(element => element.toJson());
+      return aux;
+    });
   }
 
   async update(id: string, movie: UpdateMovieDto): Promise<Movie> {

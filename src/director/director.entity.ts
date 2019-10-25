@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 
 import {
@@ -39,7 +40,7 @@ export class Director extends BaseEntity {
   @ValidateNested()
   @ValidatePromise()
   @ApiModelProperty()
-  @ManyToOne(() => Movie, movies => movies.director)
+  @OneToMany(() => Movie, movies => movies.director)
   movies: Movie[];
 
   createFromDto(data: CreateDirectorDto) {
