@@ -1,3 +1,4 @@
+import { GetMovieDto } from './Dto/get-movie.Dto';
 import { Injectable, Query, ValidationPipe } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MovieRepository } from './movie.repository';
@@ -26,7 +27,7 @@ export class MovieService {
     this.movieRepository.delete(id);
   }
 
-  async findAll(): Promise<any[]> {
+  async findAll(): Promise<GetMovieDto[]> {
     return this.movieRepository
       .find({ relations: ['category', 'director'] })
       .then(data => {
@@ -36,7 +37,7 @@ export class MovieService {
       });
   }
 
-  async findOne(id: string): Promise<any> {
+  async findOne(id: string): Promise<GetMovieDto> {
     return this.movieRepository
       .findOne(id, { relations: ['category', 'director'] })
       .then(data => {
@@ -48,7 +49,7 @@ export class MovieService {
 
   async getMoviesWithFilters(
     @Query(ValidationPipe) filterDto: GetCategoriesDto,
-  ): Promise<any[]> {
+  ): Promise<GetMovieDto[]> {
     return this.movieRepository.getMovie(filterDto).then(data => {
       const aux = data.map(element => element.toJson());
       return aux;
