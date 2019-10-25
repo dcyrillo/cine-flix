@@ -36,10 +36,14 @@ export class MovieService {
       });
   }
 
-  async findOne(id: string): Promise<Movie> {
-    return this.movieRepository.findOne(id, {
-      relations: ['category', 'director'],
-    });
+  async findOne(id: string): Promise<any> {
+    return this.movieRepository
+      .findOne(id, { relations: ['category', 'director'] })
+      .then(data => {
+        const aux = data.toJson();
+
+        return aux;
+      });
   }
 
   async getMoviesWithFilters(
